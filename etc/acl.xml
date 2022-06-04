@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Ariya_MyOrder::OrderUpdate" sortOrder="10" title="OrderUpdate">
+					<resource id="Ariya_MyOrder::OrderUpdate_save" sortOrder="10" title="Save OrderUpdate"/>
+					<resource id="Ariya_MyOrder::OrderUpdate_delete" sortOrder="20" title="Delete OrderUpdate"/>
+					<resource id="Ariya_MyOrder::OrderUpdate_update" sortOrder="30" title="Update OrderUpdate"/>
+					<resource id="Ariya_MyOrder::OrderUpdate_view" sortOrder="40" title="View OrderUpdate"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

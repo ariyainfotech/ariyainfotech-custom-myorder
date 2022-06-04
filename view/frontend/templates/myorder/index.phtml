@@ -1,0 +1,114 @@
+<?php $orders = $block->getOredrCollection(); ?>
+<?php if($orders) : ?>
+<div class="custom-order">
+	<div class="customer-order-listing">
+		<?php echo $block->getChildHtml('myorder.itemfilter');?>
+		<!-- Order listing -->
+		<?php if(sizeof($orders) > 0):?>
+		<div class="orders-list">
+			<div id="order-element">
+				<?php foreach ($orders as $order): ?>
+				<?php $orderupdatemodel = $block->getOrderWiseCollection($order['entity_id']); 
+				      $req_data = $block->getReorderData($order->getId()); 
+				?>
+				<div class="order-list-header">
+					<div class="order-cols">
+						<div data-role="collapsible" class="col-md-6 clickble">
+							<div data-role="trigger">
+								<div class="top-dt">
+									<div class="col-md-12"><span class="order-id od-label"><b><?php echo __('Order ID : ') ?></span><span class="order-id od-vale"><?php echo __($order['increment_id']); ?></span></b></div>
+									<div class="col-md-12"><span class="od-label"><b><?php echo __('('.$order['total_item_count'].' Items) ') ?><?php echo __('Bill Amount : ') ?><span class="grandtoalmain"><?php echo __($block->priceFormate($order['grand_total'])); ?></span></span></b></div>
+									<div class="col-md-12"><span class="od-label"><b>Status : <?php echo $order->getStatusLabel(); ?></span></b></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="second-dt">
+							    <div class="col-md-12"><b><span class="view-details"><a class="view-link cus-links" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/details/order_id/<?php echo $order['entity_id']; ?>"><?php echo __('View Details') ?></a></span></b></div>
+								<div class="col-md-12"><b><span class="order-date"><?php echo __($block->getDateFormate($order['created_at'])); ?></span></b></div>
+								<?php if($block->isRequesterAc() && $order->getStatusLabel() == "Delivered"): ?>
+								    <div class="col-md-12"><b><span class="re-order-link"><a class="cus-links" href="<?php echo $block->getBaseUrl(); ?>requester/request/rerequest?request_id=<?php echo $req_data['requestdetails_id'] ?>&qid=<?php echo $req_data['quote_id']; ?>">Re-Order</a></span></b></div>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div data-role="content">
+					<div class="order-details-show">
+						<?php $orderItem = $block->orderById($order['entity_id']); ?>
+								<div class="item-lable">
+                            		    <ul>
+                            		        <li class="image-label"></li>
+                            		        <li class="proname-label">Product Name</li>
+                            		        <li class="qty-label">Quantity</li>
+                            		        <li class="tax-label">Tax</li>
+                            		        <li class="amount-label">Amount</li>
+                            		    </ul>    
+                            		</div>
+							<div class="product-section-main">
+							    
+								<?php foreach ($orderItem->getAllVisibleItems() as $item): ?>
+								<div class="product-section">
+									<div class="item-data">
+										<div class="product-images">
+											<img src="<?php echo $block->productImages($item->getProductId()); ?>" alt="<?= __('Product Image');?>">
+										</div>
+										<div class="prodict-details">
+											<div class="product-name"><?php echo $item->getName(); ?></div>
+											<div class="product-price">Price: <?php echo __($block->priceFormate($item->getPrice())); ?></div>
+											<div class="product-sku">Sku: <?php echo __($item->getSku()); ?></div>
+											<div class="product-option">
+												<?php $options = $item->getProductOptions();  ?>
+												<?php if(isset($options['attributes_info'])): ?>
+													<?php foreach($options['attributes_info'] as $op): ?>
+														<div class="options-show">
+															<span class="label-name"><?php echo __($op['label']); ?>:</span>
+															<span class="label-name"><?php echo __($op['value']); ?></span>
+														</div>
+													<?php endforeach; ?>
+												<?php endif; ?>
+											</div>
+										</div>
+										<div class="order-qty">
+											<span><?php echo __('Qty') ?>: <?php echo intval($item->getQtyOrdered()); ?></span>
+										</div>
+										<div class="tax-disaply">
+											<span><?php echo __('Gst') ?>: <?php echo __($block->priceFormate($item->getTaxAmount())); ?> ( <?php echo  number_format($item->getTaxPercent(),2); ?>%)</span>
+										</div>
+										<div class="row-total">
+											<span class="total-label"><?php echo __('Total') ?>: </span><span><?php echo __($block->priceFormate($item->getRowTotal())); ?></span>
+										</div>									
+									</div>
+								</div>
+								<?php endforeach; ?>
+							</div>
+					</div>
+				</div>
+				<?php endforeach;?>
+			</div>
+		</div>
+		<?php else: ?>
+			<div class="empty-message"><span><?php echo __('Recored not found !'); ?></span></div>
+		<?php endif; ?>
+	</div>
+</div>
+<script>
+    require(['jquery','accordion'], function ($){
+		$("#order-element").accordion();
+		$(document).ready(function(){
+			jQuery(".traking-data-all").hide();	
+			jQuery('.traking').on('click', function(){
+				jQuery(".traking-data-all").hide();
+				var itemId = jQuery(this).attr("data-track-id");
+				jQuery("#track-"+itemId).show();
+			});
+			jQuery("a.item-fiter-a").on('click', function(){
+				jQuery(".cus-loader-sh").show();
+			});
+		});
+    });
+</script>
+	<?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+	<?php endif; ?>
+<?php endif; ?>

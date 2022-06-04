@@ -1,0 +1,153 @@
+<div class="my-order-back"><a href="<?php echo $this->getBaseUrl();?>sale/myorder/index/">Back</a></div>
+<?php $ordercollection = $block->orderById(); ?>
+<?php if($ordercollection): ?>
+<div class="custom-order">
+	<div class="order-details">
+		<div class="hedaer-details">
+			<div class="diadd">
+				<b><span class="order-id od-label"><?php echo __('Order ID : ') ?></span></b>
+				<b><span class="order-id od-vale"> <?php echo __($ordercollection->getIncrementId()); ?></span></b>
+				<b><span class="dates od-label"><?php echo __($block->getDateFormate($ordercollection->getCreatedAt())); ?></span></b>
+				<div class="order-status-disaply">
+					<b><span class="order-status od-label"><?php echo __('Status : ') ?></span></b>
+					<b><span class="order-status od-vale"> <?php echo __($ordercollection->getStatusLabel()); ?></span></b>
+				</div>
+			</div>	
+		</div>
+		
+		<?php if (!$ordercollection->getIsVirtual()) : ?>
+			<div class="shipping-add-info order-detailspage">
+				<?php if($ordercollection->getBillingAddress()): ?>
+					<div class="shp-details">
+						<div class="shp-detailsinner">
+							<div class="titlr-label"><?php echo __('Billing Details'); ?></div>
+							<div class="address-sp">
+								<?php echo $block->formattedAddress($ordercollection->getBillingAddress()); ?>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>	
+				<?php if($ordercollection->getShippingAddress()): ?>
+					<div class="shp-details">
+						<div class="shp-detailsinner">
+							<div class="titlr-label"><?php echo __('Shipping Details'); ?></div>
+							<div class="address-sp">
+								<?php echo $block->formattedAddress($ordercollection->getShippingAddress()); ?>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		<div class="shiping-payment-block">
+			<div class="shiping-payment-blockinner">
+				<?php if (!$ordercollection->getIsVirtual()) : ?>
+					<div class="shipping-method">
+						<div class="titlr-label"><?php echo __('Shipping Method'); ?></div>
+						<div class="second-label"><?php echo $ordercollection->getShippingDescription(); ?></div>
+					</div>
+					<?php $tracksCollection = $ordercollection->getTracksCollection(); ?>
+					<?php if(sizeof($tracksCollection) > 0): ?>
+						<br/>
+						<div class="shipping-method tacking-details">
+							<div class="titlr-label"><?php echo __('Carrier & Tracking Details'); ?></div>
+							<?php
+								foreach ($tracksCollection->getItems() as $track){ ?>
+							     	<div class="second-label"><b>Carrier Name:  </b> <?php echo __($track->getTitle()); ?></div>
+							     	<div class="second-label"><b>Tracking Number:  </b> <?php echo __($track->getTrackNumber()); ?></div>
+								<?php }
+							?>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+				<div class="payment-method">
+					<div class="titlr-label"><?php echo __('Payment Method'); ?></div>
+					<?php
+						$payment = $ordercollection->getPayment();
+						$method = $payment->getMethodInstance();
+					?>
+					<div class="second-label"><?php echo __($method->getTitle()); ?></div>
+				</div>
+			</div>
+		</div>
+		<?php $requesetemail = $block->getApprovedEmailds(); ?>
+		<?php if(sizeof($requesetemail) > 0): ?>
+			<div class="approved-mailid-block">
+				<div class="approved-mailidinner">
+					<div class="titlr-label"><?php echo __('approved by (email)'); ?></div>
+					<?php foreach($requesetemail as $key=>$value): ?>
+						<div class="second-label">
+							<?php echo __($value); ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<div class="product-section-main">
+        	<div class="item-lable">
+    		    <ul>
+    		        <li class="image-label"></li>
+    		        <li class="proname-label">Product Name</li>
+    		        <li class="qty-label">Quantity</li>
+    		        <li class="tax-label">Tax</li>
+    		        <li class="amount-label">Amount</li>
+    		    </ul>    
+    		</div>
+		<?php foreach ($ordercollection->getAllVisibleItems() as $item): ?>
+			<div class="product-section">	
+			
+				<div class="item-data">
+					<div class="product-images">
+						<img src="<?php echo $block->productImages($item->getProductId()); ?>" alt="<?= __('Product Image');?>">
+					</div>
+					<div class="prodict-details">
+						<div class="product-name"><?php echo $item->getName(); ?></div>
+						<div class="product-price">Price: <?php echo __($block->priceFormate($item->getPrice())); ?></div>
+						<div class="product-sku">Sku: <?php echo __($item->getSku()); ?></div>
+						<div class="product-option">
+							<?php $options = $item->getProductOptions();  ?>
+							<?php if(isset($options['attributes_info'])): ?>
+								<?php foreach($options['attributes_info'] as $op): ?>
+									<div class="options-show">
+										<span class="label-name"><?php echo __($op['label']); ?>:</span>
+										<span class="label-name"><?php echo __($op['value']); ?></span>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div>
+					</div>
+					<div class="order-qty">
+						<span><?php echo __('Qty') ?>: <?php echo intval($item->getQtyOrdered()); ?></span>
+					</div>
+					<div class="order-qty">
+						<span><?php echo __('Gst') ?>: <?php echo $block->priceFormate($item->getTaxAmount()); ?> (<?php echo  number_format($item->getTaxPercent(),2); ?>%)</span>
+					</div>
+					<div class="price-section"><?php echo __($block->priceFormate($item->getBaseRowTotal())); ?></div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+		<div class="price-details-box">
+			<div class="price-label"><?php echo __('Price Details'); ?></div>
+			<?php foreach ($block->getTotals() as $_code => $_total) : ?>
+				<div class="order-total <?php echo $_total->getCode(); ?>">
+					<span class="price-labe">
+						<?= /* @noEscape */ $block->escapeHtml($_total->getLabel()) ?>
+					</span>
+					<span class="price-vale">
+						<?= /* @noEscape */ $block->formatValue($_total) ?>
+					</span>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</div>
+
+<?php $req_data = $block->getReorderData($ordercollection->getId()); ?>
+    <?php if($block->isRequesterAc() && $ordercollection->getStatusLabel() == "Delivered"): ?>
+        <div class="reorder-deatils">
+    	    <a class="cus-links" href="<?php echo $block->getBaseUrl(); ?>requester/request/rerequest?request_id=<?php echo $req_data['requestdetails_id'] ?>&qid=<?php echo $req_data['quote_id']; ?>">Re-Order</a>
+	    </div> 
+	<?php endif; ?>
+   
+<?php endif; ?>

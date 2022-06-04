@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <myorder>
+            <general>
+                <dispute_enabled>1</dispute_enabled>
+                <dispute_days>15</dispute_days>
+				<return_enabled>1</return_enabled>
+                <return_days>7</return_days>
+				<cancel_enabled>1</cancel_enabled>
+            </general>
+        </myorder>
+    </default>
+</config>

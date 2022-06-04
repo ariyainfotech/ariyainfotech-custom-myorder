@@ -1,0 +1,35 @@
+<script>
+require([
+    'jquery'
+], function ($) {
+    'use strict';
+    jQuery(document).ready(function(){
+		jQuery("a.click-up").on('click', function(){
+			event.preventDefault();
+			var dataItemId = jQuery(this).attr("data-item-id");
+			var updatevalue = jQuery(this).attr("data-id-update");
+			console.log("ids",dataItemId);
+			console.log("update",updatevalue);
+			var customurl = "<?php echo $block->getBaseUrl().'sale/myorder/statusupdate'?>";
+            jQuery.ajax({
+                url: customurl,
+                type: 'POST',
+                dataType: 'json',
+				showLoader: true,
+                data: {
+                    itemid: dataItemId,
+                    status: updatevalue,
+                },
+				complete: function(response) {             
+					console.log("updare");
+					location.reload(true);
+                },
+                error: function (xhr, status, errorThrown) {
+                    console.log('Error happens. Try again.');
+					location.reload(true);
+                }
+            });
+		});
+    });
+});
+</script>

@@ -1,0 +1,151 @@
+<div class="custom-order">
+<?php echo $block->getChildHtml('myorder.itemfilter');?>
+<?php $ordercollection = $block->getAllItemsCollection(); ?>
+<?php if(count($ordercollection) > 0): ?>
+	<div class="order-item-listing">
+		<?php $orderidheader = null; ?>
+		<?php foreach ($ordercollection as $item): ?>
+		<?php $items = $block->getItemByDetails($item->getOrderItemId());?>
+			<?php $order=$block->getOrder($item->getOrderId()); ?>
+			<?php if($orderidheader != $item->getOrderId()): ?>
+				<div class="hedaer-details">
+					<div class="diadd">
+						<b><span class="order-id od-label"><?= __('Order ID : '); ?></span><span class="order-id od-vale"><?= __($item->getOrderIncrementId()); ?></span></b>
+						<b><span class="dates od-label"><a class="view-link" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/details/order_id/<?php echo $item->getOrderId(); ?>"><?php echo __('View Details') ?></a></span></b>
+					</div>	
+				</div>
+			<?php $orderidheader = $item->getOrderId(); ?>
+			<?php endif; ?>	
+			<div class="product-section">
+				<div class="item-data">
+					<div class="product-images">
+						<img src="<?php echo $block->productImages($items->getProductId()); ?>" alt="<?= __('Product Image');?>">
+					</div>
+					<div class="prodict-details">
+						<div class="product-name"><a class="item-details" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/itemdetails/item/<?php echo $items->getId(); ?>"><?php echo $items->getName(); ?></a></div>
+						<div class="product-price"><?php echo __($block->priceFormate($items->getPrice())); ?></div>
+						<div class="product-option">
+							<?php $options = $items	->getProductOptions();  ?>
+							<?php if(isset($options['attributes_info'])): ?>
+								<?php foreach($options['attributes_info'] as $op): ?>
+									<div class="options-show">
+										<span class="label-name"><?php echo __($op['label']); ?>:</span>
+										<span class="label-name"><?php echo __($op['value']); ?></span>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div>
+					</div>
+					<div class="order-qty">
+						<span><?php echo __('Qty') ?>: <?php echo intval($items->getQtyOrdered()); ?></span>
+					</div>
+					<?php if($items->getProductType() != 'virtual' && $items->getProductType() != 'amgiftcard'): ?>
+						<div class="order-shipping">
+							<div class="shipping-info"><?php echo __('Shipped (expected delivery on Tue, 20 Feb 2020)') ?></div>
+							<div class="traking" data-track-id="<?php echo $items->getId(); ?>"><?php echo __('Track Item') ?></div>
+						</div>
+						<div class="item-button">
+							<?php echo $this->getButton($items->getId()); ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<?php if($items->getProductType() != 'virtual' && $items->getProductType() != 'amgiftcard'): ?>
+				<div class="traking-data-all" id="track-<?php echo $items->getId(); ?>" style="display:none;">
+					<div class="traking-details">
+						<?php
+							$itemteackingid = null;
+							$itemtrackingtitle = null;
+							if($items->getShipmentIdDetails() != null){
+								$tracksCollection = $order->getTracksCollection();
+								$tracksCollection->addAttributeToFilter('parent_id',$items->getShipmentIdDetails());
+								if(count($tracksCollection->getData() > 0)){
+									foreach ($tracksCollection->getItems() as $track){
+										if($items->getShipmentIdDetails() == $track->getParentId()){
+											$itemteackingid = $track->getTrackNumber();
+											$itemtrackingtitle = $track->getTitle();
+										}
+									}	
+								}else{
+									$itemteackingid = null;
+									$itemtrackingtitle = null;
+								}
+							}else{
+								$itemteackingid = null;
+								$itemtrackingtitle = null;
+							}							
+						?>
+						<div class="traking-number">
+							<span class="od-label"><?php echo __('Tracking Number:'); ?></span> 
+							<?php if($itemteackingid != null): ?>
+								<span class="od-vale"><?php echo __($itemteackingid); ?></span>
+							<?php else: ?>
+								<span class="od-vale"><?php echo __('Null'); ?></span>
+							<?php endif; ?>	
+						</div>
+						<div class="traking-line">
+							<div class="line"></div>
+							<div class="col-md-4 trc">
+								<div class="date-show"><?php if($items->getItemDate() != null):?> <?php echo $block->getDateFormate($items->getItemDate()); ?><?php endif; ?></div>
+								<div class="status ship-cn"></div>
+								<div class="comment-tile"><?php echo __('Item Confirmed'); ?></div>
+							</div>
+							<div class="col-md-4 trc">
+								<?php $packeddate = $items->getItemPackedDate(); ?>
+								<div class="date-show"><?php if($packeddate != null){ echo __($block->getDateFormate($packeddate)); } ?></div>
+								<div class="status <?php if($packeddate != null): ?> ship-cn<?php else: ?>ship-dn<?php endif; ?>"></div>
+								<div class="comment-tile"><?php echo __('Item Packed and Ready to Ship'); ?></div>
+							</div>
+							<div class="col-md-4 trc">
+								<?php $ItemShip = $items->getItemShippedDate(); ?>
+								<div class="date-show"><?php if($ItemShip != null){ echo __($block->getDateFormate($ItemShip)); } ?></div>
+								<div class="status <?php if($ItemShip != null): ?> ship-cn<?php else: ?>ship-dn<?php endif; ?>"></div>
+								<div class="comment-tile"><?php echo __('Item shipped'); ?></div>
+							</div>
+							<div class="col-md-4 trc">
+								<?php $delivereddate = $items->getItemDeliveredDate(); ?>
+								<div class="date-show"><?php if($delivereddate != null){ echo __($block->getDateFormate($delivereddate)); } ?></div>
+								<div class="status <?php if($delivereddate != null): ?> ship-cn<?php else: ?>ship-dn<?php endif; ?>"></div>
+								<div class="comment-tile"><?php echo __('Item Delivered'); ?></div>
+							</div>
+						</div>
+						<div class="shipping-add-info">
+							<div class="col-md-6 shp-details">
+								<div class="titlr-label"><?php echo __('Ship To:'); ?></div>
+								<div class="address-sp">
+									<?php echo $block->formattedAddress($order->getShippingAddress()); ?>
+								</div>
+							</div>
+							<div class="col-md-6 shp-company">
+								<div class="titlr-label"><?php echo __('Ship By:'); ?></div>
+								<?php if($itemtrackingtitle != null): ?>
+									<div class="shipby"><?php echo __($itemtrackingtitle); ?></div>
+								<?php else: ?>
+									<div class="shipby"><?php echo __($order->getShippingDescription()); ?></div>
+								<?php endif; ?>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php endif; ?>
+			</div>
+		<?php endforeach; ?>
+	</div>
+	<script>
+    require(['jquery','accordion'], function ($){
+		$(document).ready(function(){
+			jQuery(".traking-data-all").hide();	
+			jQuery('.traking').on('click', function(){
+				jQuery(".traking-data-all").hide();
+				var itemId = jQuery(this).attr("data-track-id");
+				jQuery("#track-"+itemId).show();
+			});
+		});
+    });
+	</script>
+<?php if ($block->getPagerHtml()): ?>
+    	<div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+	<?php endif; ?>
+<?php else: ?>
+	<div class="empty-message"><span><?php echo __('Recored not found !'); ?></span></div>
+<?php endif; ?>
+</div>

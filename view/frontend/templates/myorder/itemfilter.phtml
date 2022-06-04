@@ -1,0 +1,59 @@
+<?php $activeFilter = $block->getParemFilterValues(); ?>
+<div class="order-count">
+	<div class="col-md-1-7 cus-ct first-ch <?php if($activeFilter == null): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getOredrCounts()); ?></div>
+				<div class="count-name"><?php echo __('All Orders') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 1): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/1">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getPendingCounts()); ?></div>
+				<div class="count-name"><?php echo __('Pending') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 2): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/2">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getProcessingCount()); ?></div>
+				<div class="count-name"><?php echo __('Processing') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 3): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/3">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getCompleteCount()); ?></div>
+				<div class="count-name"><?php echo __('In Transit') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 4): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/4">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getCanceledCount()); ?></div>
+				<div class="count-name"><?php echo __('Canceled') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 5): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/5">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getClosedCount()); ?></div>
+				<div class="count-name"><?php echo __('Closed') ?></div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-1-7 cus-ct <?php if($activeFilter == 6): echo "activefilter"; endif; ?>">
+		<a class="item-fiter-a" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/index/filterby/6">
+			<div class="or-ct">
+				<div class="it-count"><?php echo __($block->getDeliveredCount()); ?></div>
+				<div class="count-name"><?php echo __('Delivered') ?></div>
+			</div>
+		</a>
+	</div>
+</div>

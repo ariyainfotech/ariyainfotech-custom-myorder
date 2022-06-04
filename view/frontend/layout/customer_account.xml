@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="customer_account_navigation">
+			<block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-custom-link" after="-" >
+				<arguments>
+					<argument name="label" xsi:type="string" translate="true">My Order</argument>
+					<argument name="path" xsi:type="string">sale/myorder/index</argument>
+					<argument name="sortOrder" xsi:type="number">10</argument>
+					<argument name="attributes" xsi:type="array">
+						<item name="class" xsi:type="string">cus-links</item>
+					</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+		<referenceBlock name="customer-account-navigation-dispute-link" remove="true"/>
+		<referenceBlock name="customer-account-navigation-orders-link" remove="true"/>
+		<referenceBlock name="customer-account-navigation-returns-link" remove="true"/>
+    </body>
+</page>

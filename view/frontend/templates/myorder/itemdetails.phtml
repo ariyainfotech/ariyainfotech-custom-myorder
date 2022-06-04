@@ -1,0 +1,76 @@
+<?php if($block->getParemValuesFilterVal() != null): ?>
+<?php $item = $block->getItemByDetails($block->getParemValuesFilterVal()); ?>
+<?php if($item): ?>
+<?php $orderDetails = $block->orderById($item->getOrderId()); ?>
+<div class="custom-order">
+	<div class="item-details">
+		<div class="hedaer-details">
+			<div class="diadd">
+				<b><span class="order-id od-label"><?php echo __('Order ID :') ?></span></b>
+				<b><span class="order-id od-vale"> <?php echo __($orderDetails->getIncrementId()); ?></span></b>
+				<b><span class="dates od-label"><?php echo __($block->getDateFormate($orderDetails->getCreatedAt())); ?></span></b>
+			</div>	
+		</div>
+		<div class="product-section">	
+			<div class="item-data">
+				<div class="product-images">
+					<img src="<?php echo $block->productImages($item->getProductId()); ?>" alt="<?= __('Product Image');?>">
+				</div>
+				<div class="prodict-details">
+					<div class="product-name"><?php echo $item->getName(); ?></div>
+					<div class="product-price"><?php echo __($block->priceFormate($item->getPrice())); ?></div>
+					<div class="product-option">
+						<?php $options = $item->getProductOptions();  ?>
+						<?php if(isset($options['attributes_info'])): ?>
+							<?php foreach($options['attributes_info'] as $op): ?>
+								<div class="options-show">
+									<span class="label-name"><?php echo __($op['label']); ?>:</span>
+									<span class="label-name"><?php echo __($op['value']); ?></span>
+								</div>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class="order-qty">
+					<span><?php echo __('Qty') ?>: <?php echo intval($item->getQtyOrdered()); ?></span>
+				</div>
+				<?php if($item->getProductType() != 'virtual' && $item->getProductType() != 'amgiftcard'): ?>
+					<div class="order-shipping">
+						<div class="shipping-info"><?php echo __('Shipped (expected delivery on Tue, 20 Feb 2020)') ?></div>
+					</div>
+					<div class="item-button">
+						<?php echo $this->getButton($item->getId()); ?>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="price-details-box">
+			<div class="price-label"><?php echo __('Price Details'); ?></div>
+			<div class="order-total">
+				<span class="price-labe"><?= /** @noEscape */ str_replace(['%1'], [intval($item->getQtyOrdered())], $block->escapeHtml(__('Price (%1 items)'))); ?></span>
+				<span class="price-vale"><?php echo __($block->priceFormate($item->getBaseRowTotal())); ?></span>
+			</div>
+			<div class="order-total">
+				<span class="price-labe"><?php echo __('Discount'); ?></span>
+				<span class="price-vale"><?php echo __($block->priceFormate($item->getDiscountAmount())); ?></span>
+			</div>
+			<div class="order-total">
+				<span class="price-labe"><?php echo __('VAT'); ?></span>
+				<span class="price-vale"><?php echo __($block->priceFormate($item->getTaxAmount())); ?></span>
+			</div>
+			<div class="sub-totals">
+				<span class="price-labe"><?php echo __('Total Amount'); ?></span>
+				<span class="price-vale"><?php echo __($block->priceFormate($item->getBaseRowTotalInclTax())); ?></span>
+			</div>
+		</div>
+		<div class="help-ct" style="display:none;">
+			<div class="common-title"><?php echo __('Still need help?'); ?></div>
+			<div class="query-text"><?php echo __('Have queries? Please get in touch with seller of this product.'); ?></div>
+			<div class="contactseller"><?php echo __('Contact Seller'); ?></div>
+		</div>
+	</div>
+</div>
+<?php else: ?>
+	Recored not found !
+<?php endif; ?>
+<?php endif; ?>

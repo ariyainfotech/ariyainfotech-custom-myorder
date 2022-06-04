@@ -1,0 +1,26 @@
+{
+    "name": "ariya/module-myorder",
+    "description": "",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "Yuvrajsingh Raulji",
+            "email": "yuvraj.ariya@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ariya\\MyOrder\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
