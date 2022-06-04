@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Model\ResourceModel;
+namespace AriyaInfoTech\MyOrder\Model\ResourceModel;
 
 class OrderUpdate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -17,7 +17,7 @@ class OrderUpdate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('ariya_myorder_orderupdate', 'orderupdate_id');
+        $this->_init('AriyaInfoTech_MyOrder_orderupdate', 'orderupdate_id');
     }
 }
 

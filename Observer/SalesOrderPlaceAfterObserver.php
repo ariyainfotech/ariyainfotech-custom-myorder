@@ -1,6 +1,6 @@
 <?php
 
-namespace Ariya\MyOrder\Observer;
+namespace AriyaInfoTech\MyOrder\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\Request\DataPersistorInterface;
@@ -14,7 +14,7 @@ class SalesOrderPlaceAfterObserver implements \Magento\Framework\Event\ObserverI
 		
 	public function __construct(
         \Magento\Framework\Event\Manager $eventManager,
-		\Ariya\MyOrder\Helper\Data $myOrderHelper
+		\AriyaInfoTech\MyOrder\Helper\Data $myOrderHelper
 	) {
         $this->_eventManager = $eventManager;
 		$this->_myOrderHelper = $myOrderHelper;

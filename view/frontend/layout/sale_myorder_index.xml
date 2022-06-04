@@ -6,8 +6,8 @@
     </head>
 	<body>
 		<referenceContainer name="content">
-			<block class="Ariya\MyOrder\Block\Myorder\Index" name="myorder.index" template="Ariya_MyOrder::myorder/index.phtml" cacheable="false" >
-				<block class="Ariya\MyOrder\Block\Myorder\Itemfilter" name="myorder.itemfilter" template="Ariya_MyOrder::myorder/itemfilter.phtml"  cacheable="false" />
+			<block class="AriyaInfoTech\MyOrder\Block\Myorder\Index" name="myorder.index" template="AriyaInfoTech_MyOrder::myorder/index.phtml" cacheable="false" >
+				<block class="AriyaInfoTech\MyOrder\Block\Myorder\Itemfilter" name="myorder.itemfilter" template="AriyaInfoTech_MyOrder::myorder/itemfilter.phtml"  cacheable="false" />
 			</block>
 		</referenceContainer>
 	</body>

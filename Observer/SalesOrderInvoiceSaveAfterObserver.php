@@ -1,6 +1,6 @@
 <?php
 
-namespace Ariya\MyOrder\Observer;
+namespace AriyaInfoTech\MyOrder\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Session\SessionManager;
@@ -29,7 +29,7 @@ class SalesOrderInvoiceSaveAfterObserver implements ObserverInterface
         \Magento\Framework\Event\Manager $eventManager,
         SessionManager $coreSession,
         QuoteRepository $quoteRepository,
-		\Ariya\MyOrder\Helper\Data $myorderhelper
+		\AriyaInfoTech\MyOrder\Helper\Data $myorderhelper
 	) {
         $this->_eventManager = $eventManager;
 		$this->_coreSession = $coreSession;

@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Ariya\MyOrder\Model\Order;
+namespace AriyaInfoTech\MyOrder\Model\Order;
 
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Sales\Api\Data\OrderItemInterface;
@@ -33,7 +33,7 @@ class Item extends \Magento\Sales\Model\Order\Item
 	 
 	//protected $_myorderHelper;
 	
-	//public function __construct(\Ariya\MyOrder\Helper\Data $myorderHelper) {
+	//public function __construct(\AriyaInfoTech\MyOrder\Helper\Data $myorderHelper) {
 		//$this->_myorderHelper = $myorderHelper;
 	//}
  
@@ -95,7 +95,7 @@ class Item extends \Magento\Sales\Model\Order\Item
 	
 	public function getMyOrderHelper(){
 		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-		return $objectManager->get('\Ariya\MyOrder\Helper\Data');
+		return $objectManager->get('\AriyaInfoTech\MyOrder\Helper\Data');
 	}
 	
 	public function getItemDate(){

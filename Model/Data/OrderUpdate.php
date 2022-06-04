@@ -5,9 +5,9 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Model\Data;
+namespace AriyaInfoTech\MyOrder\Model\Data;
 
-use Ariya\MyOrder\Api\Data\OrderUpdateInterface;
+use AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface;
 
 class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implements OrderUpdateInterface
 {
@@ -24,7 +24,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set orderupdate_id
      * @param string $orderupdateId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setOrderupdateId($orderupdateId)
     {
@@ -43,7 +43,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set id
      * @param string $id
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setId($id)
     {
@@ -52,7 +52,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
 
     /**
      * Retrieve existing extension attributes object or create a new one.
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateExtensionInterface|null
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateExtensionInterface|null
      */
     public function getExtensionAttributes()
     {
@@ -61,11 +61,11 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
 
     /**
      * Set an extension attributes object.
-     * @param \Ariya\MyOrder\Api\Data\OrderUpdateExtensionInterface $extensionAttributes
+     * @param \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(
-        \Ariya\MyOrder\Api\Data\OrderUpdateExtensionInterface $extensionAttributes
+        \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateExtensionInterface $extensionAttributes
     ) {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
@@ -82,7 +82,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set seller_id
      * @param string $sellerId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setSellerId($sellerId)
     {
@@ -101,7 +101,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set order_id
      * @param string $orderId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setOrderId($orderId)
     {
@@ -120,7 +120,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set order_increment_id
      * @param string $orderIncrementId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setOrderIncrementId($orderIncrementId)
     {
@@ -139,7 +139,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set order_item_id
      * @param string $orderItemId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setOrderItemId($orderItemId)
     {
@@ -158,7 +158,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set invoice_id
      * @param string $invoiceId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setInvoiceId($invoiceId)
     {
@@ -177,7 +177,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set invoice_increment_id
      * @param string $invoiceIncrementId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setInvoiceIncrementId($invoiceIncrementId)
     {
@@ -196,7 +196,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set creditmemo_id
      * @param string $creditmemoId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setCreditmemoId($creditmemoId)
     {
@@ -215,7 +215,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set creditmemo_increment_id
      * @param string $creditmemoIncrementId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setCreditmemoIncrementId($creditmemoIncrementId)
     {
@@ -234,7 +234,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set shipment_id
      * @param string $shipmentId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setShipmentId($shipmentId)
     {
@@ -253,7 +253,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set shipment_increment_id
      * @param string $shipmentIncrementId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setShipmentIncrementId($shipmentIncrementId)
     {
@@ -272,7 +272,7 @@ class OrderUpdate extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**
      * Set customer_id
      * @param string $customerId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      */
     public function setCustomerId($customerId)
     {

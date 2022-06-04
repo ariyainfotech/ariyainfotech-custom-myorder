@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Helper;
+namespace AriyaInfoTech\MyOrder\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
@@ -77,16 +77,16 @@ class Data extends AbstractHelper
 		\Magento\Catalog\Helper\Image $imagesHelper,
 		PaymentHelper $paymentHelper,
         AddressRenderer $addressRenderer,
-		\Ariya\MyOrder\Model\OrderUpdate $orderUpdateModel,
-		\Ariya\MyOrder\Model\OrderUpdateFactory $orderUpdateFacetory,
-		\Ariya\MyOrder\Model\ResourceModel\OrderUpdate\CollectionFactory $orderUpdateCollection,
+		\AriyaInfoTech\MyOrder\Model\OrderUpdate $orderUpdateModel,
+		\AriyaInfoTech\MyOrder\Model\OrderUpdateFactory $orderUpdateFacetory,
+		\AriyaInfoTech\MyOrder\Model\ResourceModel\OrderUpdate\CollectionFactory $orderUpdateCollection,
 		\Magento\Sales\Api\OrderItemRepositoryInterface $orderItemRepository,
 		\Magento\Catalog\Model\ProductFactory $productloader,
 		ShipmentRepositoryInterface $shipmentRepository,
 		\Magento\Store\Model\StoreManagerInterface $storeManager,
 		\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Framework\App\Helper\Context $context,
-		\Ariya\ApprovalRequester\Helper\Data $approvalHelper
+		\AriyaInfoTech\ApprovalRequester\Helper\Data $approvalHelper
     ) {
 		$this->_orderCollectionFactory = $orderCollectionFactory;
 		$this->_customerSession = $customerSession;

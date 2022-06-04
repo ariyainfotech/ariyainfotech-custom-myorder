@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" type="Ariya\MyOrder\Model\OrderUpdateRepository"/>
-	<preference for="Ariya\MyOrder\Api\Data\OrderUpdateInterface" type="Ariya\MyOrder\Model\Data\OrderUpdate"/>
-	<preference for="Ariya\MyOrder\Api\Data\OrderUpdateSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-	<!-- <preference for="Magento\Sales\Model\Order\Item" type="Ariya\MyOrder\Model\Order\Item" /> -->
-	<preference for="Magento\Checkout\Block\Onepage\Success" type="Ariya\MyOrder\Block\Onepage\Success" />
+	<preference for="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" type="AriyaInfoTech\MyOrder\Model\OrderUpdateRepository"/>
+	<preference for="AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface" type="AriyaInfoTech\MyOrder\Model\Data\OrderUpdate"/>
+	<preference for="AriyaInfoTech\MyOrder\Api\Data\OrderUpdateSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<!-- <preference for="Magento\Sales\Model\Order\Item" type="AriyaInfoTech\MyOrder\Model\Order\Item" /> -->
+	<preference for="Magento\Checkout\Block\Onepage\Success" type="AriyaInfoTech\MyOrder\Block\Onepage\Success" />
 </config>

@@ -5,20 +5,20 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Api\Data;
+namespace AriyaInfoTech\MyOrder\Api\Data;
 
 interface OrderUpdateSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
 
     /**
      * Get OrderUpdate list.
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface[]
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface[]
      */
     public function getItems();
 
     /**
      * Set id list.
-     * @param \Ariya\MyOrder\Api\Data\OrderUpdateInterface[] $items
+     * @param \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface[] $items
      * @return $this
      */
     public function setItems(array $items);

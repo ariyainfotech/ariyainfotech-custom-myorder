@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Api;
+namespace AriyaInfoTech\MyOrder\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 
@@ -14,18 +14,18 @@ interface OrderUpdateRepositoryInterface
 
     /**
      * Save OrderUpdate
-     * @param \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @param \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function save(
-        \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+        \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
     );
 
     /**
      * Retrieve OrderUpdate
      * @param string $orderupdateId
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function get($orderupdateId);
@@ -33,7 +33,7 @@ interface OrderUpdateRepositoryInterface
     /**
      * Retrieve OrderUpdate matching the specified criteria.
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Ariya\MyOrder\Api\Data\OrderUpdateSearchResultsInterface
+     * @return \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(
@@ -42,12 +42,12 @@ interface OrderUpdateRepositoryInterface
 
     /**
      * Delete OrderUpdate
-     * @param \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+     * @param \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function delete(
-        \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+        \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
     );
 
     /**

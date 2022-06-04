@@ -8,7 +8,7 @@
             <class>separator-top</class>
             <label>My Order</label>
             <tab>ariya</tab>
-            <resource>Ariya_MyOrder::config</resource>
+            <resource>AriyaInfoTech_MyOrder::config</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
             </group>

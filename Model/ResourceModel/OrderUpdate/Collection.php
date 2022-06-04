@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Model\ResourceModel\OrderUpdate;
+namespace AriyaInfoTech\MyOrder\Model\ResourceModel\OrderUpdate;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -23,8 +23,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected function _construct()
     {
         $this->_init(
-            \Ariya\MyOrder\Model\OrderUpdate::class,
-            \Ariya\MyOrder\Model\ResourceModel\OrderUpdate::class
+            \AriyaInfoTech\MyOrder\Model\OrderUpdate::class,
+            \AriyaInfoTech\MyOrder\Model\ResourceModel\OrderUpdate::class
         );
     }
 }

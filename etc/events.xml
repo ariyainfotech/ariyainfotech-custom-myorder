@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_submit_all_after">
-        <observer name="ariya_myorder_sales_order_place_after_observer" instance="Ariya\MyOrder\Observer\SalesOrderPlaceAfterObserver" />
+        <observer name="AriyaInfoTech_MyOrder_sales_order_place_after_observer" instance="AriyaInfoTech\MyOrder\Observer\SalesOrderPlaceAfterObserver" />
     </event>
 	<event name="sales_order_shipment_save_after">
-        <observer name="ariya_myorder_order_shipment_after" instance="Ariya\MyOrder\Observer\SalesOrderShipmentSaveAfterObserver" />
+        <observer name="AriyaInfoTech_MyOrder_order_shipment_after" instance="AriyaInfoTech\MyOrder\Observer\SalesOrderShipmentSaveAfterObserver" />
     </event>
 	<!--<event name="sales_order_invoice_save_after">
-        <observer name="ariya_myorder_sales_order_invoice_save_after_observer" instance="Ariya\MyOrder\Observer\SalesOrderInvoiceSaveAfterObserver" />
+        <observer name="AriyaInfoTech_MyOrder_sales_order_invoice_save_after_observer" instance="AriyaInfoTech\MyOrder\Observer\SalesOrderInvoiceSaveAfterObserver" />
     </event>-->
 	<!--<event name="ariya_dispute_status_changed">
-        <observer name="magento_amdispute_status_changed" instance="Ariya\MyOrder\Observer\Disput\StatusChanged" />
+        <observer name="magento_amdispute_status_changed" instance="AriyaInfoTech\MyOrder\Observer\Disput\StatusChanged" />
     </event> -->
 </config>

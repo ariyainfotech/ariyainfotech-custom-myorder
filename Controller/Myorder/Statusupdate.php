@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Controller\Myorder;
+namespace AriyaInfoTech\MyOrder\Controller\Myorder;
 
 class Statusupdate extends \Magento\Framework\App\Action\Action
 {
@@ -26,7 +26,7 @@ class Statusupdate extends \Magento\Framework\App\Action\Action
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Json\Helper\Data $jsonHelper,
 		\Magento\Framework\Message\ManagerInterface $messageManager,
-		\Ariya\MyOrder\Helper\Data $myorderHelper,
+		\AriyaInfoTech\MyOrder\Helper\Data $myorderHelper,
 		
         \Psr\Log\LoggerInterface $logger
     ) {

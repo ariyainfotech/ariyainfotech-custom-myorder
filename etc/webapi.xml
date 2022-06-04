@@ -1,33 +1,33 @@
 <?xml version="1.0" ?>
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
 	<route method="POST" url="/V1/ariya-myorder/orderupdate">
-		<service class="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" method="save"/>
+		<service class="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" method="save"/>
 		<resources>
-			<resource ref="Ariya_MyOrder::OrderUpdate_save"/>
+			<resource ref="AriyaInfoTech_MyOrder::OrderUpdate_save"/>
 		</resources>
 	</route>
 	<route method="GET" url="/V1/ariya-myorder/orderupdate/search">
-		<service class="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" method="getList"/>
+		<service class="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" method="getList"/>
 		<resources>
-			<resource ref="Ariya_MyOrder::OrderUpdate_view"/>
+			<resource ref="AriyaInfoTech_MyOrder::OrderUpdate_view"/>
 		</resources>
 	</route>
 	<route method="GET" url="/V1/ariya-myorder/orderupdate/:orderupdateId">
-		<service class="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" method="get"/>
+		<service class="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" method="get"/>
 		<resources>
-			<resource ref="Ariya_MyOrder::OrderUpdate_view"/>
+			<resource ref="AriyaInfoTech_MyOrder::OrderUpdate_view"/>
 		</resources>
 	</route>
 	<route method="PUT" url="/V1/ariya-myorder/orderupdate/:orderupdateId">
-		<service class="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" method="save"/>
+		<service class="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" method="save"/>
 		<resources>
-			<resource ref="Ariya_MyOrder::OrderUpdate_update"/>
+			<resource ref="AriyaInfoTech_MyOrder::OrderUpdate_update"/>
 		</resources>
 	</route>
 	<route method="DELETE" url="/V1/ariya-myorder/orderupdate/:orderupdateId">
-		<service class="Ariya\MyOrder\Api\OrderUpdateRepositoryInterface" method="deleteById"/>
+		<service class="AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface" method="deleteById"/>
 		<resources>
-			<resource ref="Ariya_MyOrder::OrderUpdate_delete"/>
+			<resource ref="AriyaInfoTech_MyOrder::OrderUpdate_delete"/>
 		</resources>
 	</route>
 </routes>

@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Ariya\MyOrder\Block\Onepage;
+namespace AriyaInfoTech\MyOrder\Block\Onepage;
 
 class Success extends \Magento\Checkout\Block\Onepage\Success
 {

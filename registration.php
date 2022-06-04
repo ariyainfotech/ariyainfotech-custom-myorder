@@ -5,5 +5,5 @@
  */
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Ariya_MyOrder', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'AriyaInfoTech_MyOrder', __DIR__);
 

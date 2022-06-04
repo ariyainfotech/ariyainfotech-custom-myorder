@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Controller\Myorder;
+namespace AriyaInfoTech\MyOrder\Controller\Myorder;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -22,7 +22,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-		\Ariya\MyOrder\Helper\Data $myorderHelper,
+		\AriyaInfoTech\MyOrder\Helper\Data $myorderHelper,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;

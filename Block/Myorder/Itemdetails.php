@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Block\Myorder;
+namespace AriyaInfoTech\MyOrder\Block\Myorder;
 
 class Itemdetails extends \Magento\Framework\View\Element\Template
 {
@@ -20,7 +20,7 @@ class Itemdetails extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-		\Ariya\MyOrder\Helper\Data $myorderHelper,
+		\AriyaInfoTech\MyOrder\Helper\Data $myorderHelper,
         array $data = []
     ) {
 		$this->_myorderHelper = $myorderHelper;	

@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ariya\MyOrder\Model;
+namespace AriyaInfoTech\MyOrder\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
@@ -16,11 +16,11 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Store\Model\StoreManagerInterface;
-use Ariya\MyOrder\Api\Data\OrderUpdateInterfaceFactory;
-use Ariya\MyOrder\Api\Data\OrderUpdateSearchResultsInterfaceFactory;
-use Ariya\MyOrder\Api\OrderUpdateRepositoryInterface;
-use Ariya\MyOrder\Model\ResourceModel\OrderUpdate as ResourceOrderUpdate;
-use Ariya\MyOrder\Model\ResourceModel\OrderUpdate\CollectionFactory as OrderUpdateCollectionFactory;
+use AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterfaceFactory;
+use AriyaInfoTech\MyOrder\Api\Data\OrderUpdateSearchResultsInterfaceFactory;
+use AriyaInfoTech\MyOrder\Api\OrderUpdateRepositoryInterface;
+use AriyaInfoTech\MyOrder\Model\ResourceModel\OrderUpdate as ResourceOrderUpdate;
+use AriyaInfoTech\MyOrder\Model\ResourceModel\OrderUpdate\CollectionFactory as OrderUpdateCollectionFactory;
 
 class OrderUpdateRepository implements OrderUpdateRepositoryInterface
 {
@@ -90,7 +90,7 @@ class OrderUpdateRepository implements OrderUpdateRepositoryInterface
      * {@inheritdoc}
      */
     public function save(
-        \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+        \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
     ) {
         /* if (empty($orderUpdate->getStoreId())) {
             $storeId = $this->storeManager->getStore()->getId();
@@ -100,7 +100,7 @@ class OrderUpdateRepository implements OrderUpdateRepositoryInterface
         $orderUpdateData = $this->extensibleDataObjectConverter->toNestedArray(
             $orderUpdate,
             [],
-            \Ariya\MyOrder\Api\Data\OrderUpdateInterface::class
+            \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface::class
         );
         
         $orderUpdateModel = $this->orderUpdateFactory->create()->setData($orderUpdateData);
@@ -139,7 +139,7 @@ class OrderUpdateRepository implements OrderUpdateRepositoryInterface
         
         $this->extensionAttributesJoinProcessor->process(
             $collection,
-            \Ariya\MyOrder\Api\Data\OrderUpdateInterface::class
+            \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface::class
         );
         
         $this->collectionProcessor->process($criteria, $collection);
@@ -161,7 +161,7 @@ class OrderUpdateRepository implements OrderUpdateRepositoryInterface
      * {@inheritdoc}
      */
     public function delete(
-        \Ariya\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
+        \AriyaInfoTech\MyOrder\Api\Data\OrderUpdateInterface $orderUpdate
     ) {
         try {
             $orderUpdateModel = $this->orderUpdateFactory->create();

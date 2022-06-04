@@ -6,7 +6,7 @@
     </head>
 	<body>	
 		<referenceContainer name="content">
-			<block class="Ariya\MyOrder\Block\Myorder\Details" name="myorder.details" template="Ariya_MyOrder::myorder/details.phtml"/>
+			<block class="AriyaInfoTech\MyOrder\Block\Myorder\Details" name="myorder.details" template="AriyaInfoTech_MyOrder::myorder/details.phtml"/>
 		</referenceContainer>
 	</body>
 </page>
