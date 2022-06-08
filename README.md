@@ -1,6 +1,6 @@
-# Mage2 Module Ariya MyOrder
+# Mage2 Module Ariya InfoTech MyOrder
 
-    ``ariya/module-myorder``
+    ``ariyainfotech/module-myorder``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -17,7 +17,7 @@
 
 ### Type 1: Zip file
 
- - Unzip the zip file in `app/code/Ariya`
+ - Unzip the zip file in `app/code/AriyaInfoTech`
  - Enable the module by running `php bin/magento module:enable AriyaInfoTech_MyOrder`
  - Apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
