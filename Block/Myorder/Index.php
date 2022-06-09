@@ -132,13 +132,5 @@ class Index extends \Magento\Framework\View\Element\Template
         }
         return $this->connection;
     }
-
-    public function getReorderData($orderid)
-    {
-        $table=$this->_resource->getTableName('ariya_approvalrequester_requestdetails'); 
-        $req_data = $this->getConnection()->fetchRow('SELECT requestdetails_id,quote_id FROM ' . $table.' WHERE order_id = '.$orderid);
-        return $req_data;
-    }
-	
 	
 }

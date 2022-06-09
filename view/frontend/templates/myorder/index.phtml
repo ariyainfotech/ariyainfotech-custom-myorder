@@ -8,9 +8,7 @@
 		<div class="orders-list">
 			<div id="order-element">
 				<?php foreach ($orders as $order): ?>
-				<?php $orderupdatemodel = $block->getOrderWiseCollection($order['entity_id']); 
-				      $req_data = $block->getReorderData($order->getId()); 
-				?>
+				<?php $orderupdatemodel = $block->getOrderWiseCollection($order['entity_id']); ?>
 				<div class="order-list-header">
 					<div class="order-cols">
 						<div data-role="collapsible" class="col-md-6 clickble">
@@ -26,9 +24,6 @@
 							<div class="second-dt">
 							    <div class="col-md-12"><b><span class="view-details"><a class="view-link cus-links" href="<?php echo $block->getBaseUrl(); ?>sale/myorder/details/order_id/<?php echo $order['entity_id']; ?>"><?php echo __('View Details') ?></a></span></b></div>
 								<div class="col-md-12"><b><span class="order-date"><?php echo __($block->getDateFormate($order['created_at'])); ?></span></b></div>
-								<?php if($block->isRequesterAc() && $order->getStatusLabel() == "Delivered"): ?>
-								    <div class="col-md-12"><b><span class="re-order-link"><a class="cus-links" href="<?php echo $block->getBaseUrl(); ?>requester/request/rerequest?request_id=<?php echo $req_data['requestdetails_id'] ?>&qid=<?php echo $req_data['quote_id']; ?>">Re-Order</a></span></b></div>
-								<?php endif; ?>
 							</div>
 						</div>
 					</div>	
@@ -73,7 +68,7 @@
 											<span><?php echo __('Qty') ?>: <?php echo intval($item->getQtyOrdered()); ?></span>
 										</div>
 										<div class="tax-disaply">
-											<span><?php echo __('Gst') ?>: <?php echo __($block->priceFormate($item->getTaxAmount())); ?> ( <?php echo  number_format($item->getTaxPercent(),2); ?>%)</span>
+											<span><?php echo __($block->priceFormate($item->getTaxAmount())); ?></span>
 										</div>
 										<div class="row-total">
 											<span class="total-label"><?php echo __('Total') ?>: </span><span><?php echo __($block->priceFormate($item->getRowTotal())); ?></span>

@@ -169,7 +169,7 @@ class Details extends \Magento\Framework\View\Element\Template
 		**/
 		if ((double)$this->getSource()->getTaxAmount() != 0) {
             if ($this->getSource()->getTaxAmount()) {
-                $discountLabel = __('GST', $source->getDiscountDescription());
+                $discountLabel = __('TAX', $source->getDiscountDescription());
             }
             $this->_totals['tax_amount'] = new \Magento\Framework\DataObject(
                 [
@@ -401,13 +401,6 @@ class Details extends \Magento\Framework\View\Element\Template
             $this->connection = $this->_resource->getConnection('core_write');
         }
         return $this->connection;
-    }
-
-    public function getReorderData($orderid)
-    {
-        $table=$this->_resource->getTableName('ariya_approvalrequester_requestdetails'); 
-        $req_data = $this->getConnection()->fetchRow('SELECT requestdetails_id,quote_id FROM ' . $table.' WHERE order_id = '.$orderid);
-        return $req_data;
     }
 }
 

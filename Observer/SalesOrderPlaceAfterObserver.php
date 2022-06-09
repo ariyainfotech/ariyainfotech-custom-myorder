@@ -28,7 +28,7 @@ class SalesOrderPlaceAfterObserver implements \Magento\Framework\Event\ObserverI
 		if($this->_myOrderHelper->getCustomerId()):
 			$customerId = $this->_myOrderHelper->getCustomerId();
 			foreach ($order->getAllVisibleItems() as $item):
-				$arraycreate = array("seller_id"=>null,"order_increment_id"=>$incrementId,"order_id"=>$lastOrderId,"order_item_id"=>$item->getId(),"customer_id"=>$customerId,"status"=>"order_received","order_received_date"=>$oredrdate);
+				$arraycreate = array("seller_id"=>"","order_increment_id"=>$incrementId,"order_id"=>$lastOrderId,"order_item_id"=>$item->getId(),"customer_id"=>$customerId,"status"=>"order_received","order_received_date"=>$oredrdate);
 				$this->_myOrderHelper->insertRecored($arraycreate);
 			endforeach;
 		endif;

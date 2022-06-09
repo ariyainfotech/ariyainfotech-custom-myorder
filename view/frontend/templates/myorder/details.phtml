@@ -107,7 +107,7 @@
 						<span><?php echo __('Qty') ?>: <?php echo intval($item->getQtyOrdered()); ?></span>
 					</div>
 					<div class="order-qty">
-						<span><?php echo __('Gst') ?>: <?php echo $block->priceFormate($item->getTaxAmount()); ?> (<?php echo  number_format($item->getTaxPercent(),2); ?>%)</span>
+						<span><?php echo $block->priceFormate($item->getTaxAmount()); ?></span>
 					</div>
 					<div class="price-section"><?php echo __($block->priceFormate($item->getBaseRowTotal())); ?></div>
 				</div>
@@ -129,12 +129,4 @@
 		</div>
 	</div>
 </div>
-
-<?php $req_data = $block->getReorderData($ordercollection->getId()); ?>
-    <?php if($block->isRequesterAc() && $ordercollection->getStatusLabel() == "Delivered"): ?>
-        <div class="reorder-deatils">
-    	    <a class="cus-links" href="<?php echo $block->getBaseUrl(); ?>requester/request/rerequest?request_id=<?php echo $req_data['requestdetails_id'] ?>&qid=<?php echo $req_data['quote_id']; ?>">Re-Order</a>
-	    </div> 
-	<?php endif; ?>
-   
 <?php endif; ?>

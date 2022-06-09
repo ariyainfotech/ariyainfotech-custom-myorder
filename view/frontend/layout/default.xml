@@ -7,15 +7,6 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="top.links">
-			 <block class="Magento\Framework\View\Element\Html\Link\Current" template="Magento_Theme::html/custom-link.phtml" name="account.menu.order.custom">
-				<arguments>
-					<argument name="class" xsi:type="string">order-link</argument>
-					<argument name="label" xsi:type="string" translate="true">My Orders</argument>
-					<argument name="path" xsi:type="string">sale/myorder/index</argument>
-				</arguments>
-			</block>
-		</referenceBlock>
 		<referenceBlock name="account.menu.items">
 			<block class="Magento\Framework\View\Element\Html\Link" name="custom.order.link" before="account.menu.myaccount">
                 <arguments>
