@@ -85,8 +85,7 @@ class Data extends AbstractHelper
 		ShipmentRepositoryInterface $shipmentRepository,
 		\Magento\Store\Model\StoreManagerInterface $storeManager,
 		\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\App\Helper\Context $context,
-		\AriyaInfoTech\ApprovalRequester\Helper\Data $approvalHelper
+        \Magento\Framework\App\Helper\Context $context
     ) {
 		$this->_orderCollectionFactory = $orderCollectionFactory;
 		$this->_customerSession = $customerSession;
@@ -106,7 +105,6 @@ class Data extends AbstractHelper
 		$this->scopeConfig = $scopeConfig;
 		$this->_storeManager = $storeManager;
 		$this->_productloader = $productloader;
-		$this->_approvalHelper = $approvalHelper;
         parent::__construct($context);
     }
 	
@@ -543,26 +541,6 @@ class Data extends AbstractHelper
 			$this->logger->critical($e->getMessage());
 			return false;
 		}	
-	}
-	
-	public function getApprovalEmaildsByOrderid($oredrid){
-		try{
-			$request = $this->_approvalHelper->getRequestDetailsFactory()->create()->load($oredrid,"order_id");
-			$approvalid = array();
-			if($request->getRequestApprovedid() != null){
-				$approvalid = explode(",",$request->getRequestApprovedid());
-			}
-			$returnemail = array();
-			if(sizeof($approvalid) > 0){
-				foreach($approvalid as $key=>$value){
-					$returnemail[]=$this->_approvalHelper->getCustomerIdToEmailId($value);
-				}
-			}
-			return $returnemail;
-		}catch(\Exception $e){
-			$this->logger->critical($e->getMessage());
-			return false;
-		}
 	}
 	
 	public function isRequesterAccount(){
