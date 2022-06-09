@@ -70,19 +70,6 @@
 				</div>
 			</div>
 		</div>
-		<?php $requesetemail = $block->getApprovedEmailds(); ?>
-		<?php if(sizeof($requesetemail) > 0): ?>
-			<div class="approved-mailid-block">
-				<div class="approved-mailidinner">
-					<div class="titlr-label"><?php echo __('approved by (email)'); ?></div>
-					<?php foreach($requesetemail as $key=>$value): ?>
-						<div class="second-label">
-							<?php echo __($value); ?>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		<?php endif; ?>
 		<div class="product-section-main">
         	<div class="item-lable">
     		    <ul>

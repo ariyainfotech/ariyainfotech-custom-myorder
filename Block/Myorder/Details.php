@@ -33,10 +33,9 @@ class Details extends \Magento\Framework\View\Element\Template
      * @var \Magento\Framework\Registry
      */
     protected $_coreRegistry = null;
-
-	protected $_gstHelper;
 	
 	protected $_resource;
+	
 	protected $connection;
 	
     /**
@@ -50,13 +49,11 @@ class Details extends \Magento\Framework\View\Element\Template
 		\AriyaInfoTech\MyOrder\Helper\Data $myorderHelper,
 		\Magento\Framework\Registry $registry,
 		\Magento\Framework\App\ResourceConnection $resource,
-		\Codilar\Gst\Helper\Data $gstHelper,
         array $data = []
     ) {
 		$this->_myorderHelper = $myorderHelper;
 		$this->_coreRegistry = $registry;
 		$this->_resource = $resource;
-		$this->_gstHelper = $gstHelper;
         parent::__construct($context, $data);
     }
 	
@@ -392,51 +389,6 @@ class Details extends \Magento\Framework\View\Element\Template
 	
 	public function getButton($itemId){
 		return $this->_myorderHelper->setButton($itemId);
-	}
-	
-	public function getGstCollection($totalGst){
-		try{
-			$gstCollection = array();
-			$order = $this->getOrder();	
-			$productionState = $this->_gstHelper->getProductionState();
-			$shippingGstStatus = $this->_gstHelper->getShippingGstStatus();
-			$productionState = str_replace(' ', '', strtolower($productionState));
-			$state = $order->getShippingAddress()->getRegion();
-			$state = str_replace(' ', '', strtolower($state));
-			$shippingTaxAmount = $order->getShippingTaxAmount();
-			$sgst = $totalGst/2;
-			$igst = $totalGst;
-			if($state==$productionState){
-				$state_title = "SGST";
-				$central_title = "CGST";
-				$gstCollection[1]['code'] = 'sgst';
-				$gstCollection[1]['label'] = $state_title;
-				$gstCollection[1]['amount'] = $sgst;
-				$gstCollection[2]['code'] = 'cgst';
-				$gstCollection[2]['label'] = $central_title;
-				$gstCollection[2]['amount'] = $sgst;
-			}else{
-				$title = "IGST";
-				$gstCollection[1]['code'] = 'igst';
-				$gstCollection[1]['label'] = $title;
-				$gstCollection[1]['amount'] = $igst;
-			}
-			$gstCollection[0]['code'] = 'total_gst';
-			$gstCollection[0]['label'] = 'Total GST';
-			$gstCollection[0]['amount'] = $totalGst;
-			return $gstCollection;
-		}catch(\Exception $e) {
-			return false;
-		}	
-	}
-	
-	public function getApprovedEmailds(){
-		try{
-			$orderid = $this->getOrderId();
-			return $this->_myorderHelper->getApprovalEmaildsByOrderid($orderid );
-		}catch(\Exception $e) {
-			return false;
-		}
 	}
 	
 	public function isRequesterAc(){
