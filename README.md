@@ -29,7 +29,7 @@
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require ariya/module-myorder`
+ - Install the module composer by running `composer require ariyainfotech/module-myorder`
  - enable the module by running `php bin/magento module:enable AriyaInfoTech_MyOrder`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
